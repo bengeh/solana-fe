@@ -31,7 +31,7 @@ const getProvider = () => {
 
 export interface TweetState {
     totalTweets: Tweet;
-    tweetList: Array<TweetResponse>;
+    tweetList: Array<ITweetList>;
     isWalletConnected: boolean;
 }
 
@@ -40,6 +40,10 @@ export interface TweetResponse {
     tweet: string;
 }
 
+export interface ITweetList {
+    tweetObj: TweetResponse;
+    userAddress: PublicKeyAccount
+}
 export interface PublicKeyAccount {
     negative: number;
     words: Array<number>;
@@ -97,11 +101,11 @@ export const createGifAccount = () => async (dispatch: any) => {
       console.log("Error creating BaseAccount account:", error)
     }
   }
-export const sendTweet = (inputValue: TweetResponse) => async (dispatch: any) => {
+export const createTweet = (inputValue: TweetResponse) => async (dispatch: any) => {
     const provider = getProvider();
       const program = new Program(idl, programID, provider);
     const baseAccount = web3.Keypair.fromSecretKey(secret)
-    if (inputValue) {
+    if (!inputValue) {
       console.log("Error, please input tweet and user name")
       return
     }
@@ -127,7 +131,7 @@ const tweetSlice = createSlice({
     name: 'tweet',
     initialState,
     reducers: {
-        setTweetList: (state, { payload }: PayloadAction<Array<TweetResponse>>) => {
+        setTweetList: (state, { payload }: PayloadAction<Array<ITweetList>>) => {
             state.tweetList = payload
         },
         setTotalTweet: (state, { payload }: PayloadAction<Tweet>) => {

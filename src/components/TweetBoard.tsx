@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { createGifAccount } from "../features/tweets/tweetSlice";
+import { createGifAccount, createTweet, ITweetList } from "../features/tweets/tweetSlice";
 import { RootState } from "../store";
-import { TEST_TWEETS } from "../utils/constants";
 import classes from "./TweetBoard.module.scss";
 
-interface ITweet {
-    userName: string;
-    tweet: string;
-}
 
 const TweetBoard = () => {
     const dispatch = useDispatch()
@@ -29,6 +24,7 @@ const TweetBoard = () => {
     const sendTweet = async () => {
         if (states.userName) {
           console.log('Gif link:', states);
+          dispatch(createTweet(states))
         } else {
           console.log('Empty input. Try again.');
         }
@@ -44,7 +40,7 @@ const TweetBoard = () => {
       const handleOneTimeInit = () => {
         dispatch(createGifAccount())
       }
-      if(totalTweet.length === 0) {
+      if(totalTweet.length === null) {
         return (
             <div className="connected-container">
               <button className="cta-button submit-gif-button" onClick={handleOneTimeInit}>
@@ -55,12 +51,12 @@ const TweetBoard = () => {
       } else {
         return(
             <div>
-                {/* {tweetList.tweetList.map((tweet: ITweet) => (
+                {tweetList.map((tweet: ITweetList) => (
                     <div className={classes.TweetContainer}>
-                        <div className={classes.UserNameWrapper}>{tweet.userName}</div>
-                        <div className={classes.TweetWrapper}>{tweet.tweet}</div>
+                        <div className={classes.UserNameWrapper}>{tweet.tweetObj.userName}</div>
+                        <div className={classes.TweetWrapper}>{tweet.tweetObj.tweet}</div>
                     </div>
-                ))} */}
+                ))}
                 <form
                 className={classes.FormContainer}
           onSubmit={(event) => {

@@ -4,7 +4,8 @@ import { setIsWalletConnected } from "./features/tweets/tweetSlice"
 import TweetBoard from "./components/TweetBoard";
 import logo from './logo.svg';
 import './App.css';
-
+import { Buffer } from 'buffer';
+window.Buffer = Buffer;
 
 declare global {
   interface Window {
