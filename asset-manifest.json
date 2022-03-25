@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/solana-fe/static/css/main.b5ed3d00.css",
-    "main.js": "/solana-fe/static/js/main.6922f7a0.js",
-    "static/js/787.d26781d5.chunk.js": "/solana-fe/static/js/787.d26781d5.chunk.js",
+    "main.js": "/solana-fe/static/js/main.c2b37c17.js",
+    "static/js/787.c2b0d93e.chunk.js": "/solana-fe/static/js/787.c2b0d93e.chunk.js",
     "index.html": "/solana-fe/index.html",
     "main.b5ed3d00.css.map": "/solana-fe/static/css/main.b5ed3d00.css.map",
-    "main.6922f7a0.js.map": "/solana-fe/static/js/main.6922f7a0.js.map",
-    "787.d26781d5.chunk.js.map": "/solana-fe/static/js/787.d26781d5.chunk.js.map"
+    "main.c2b37c17.js.map": "/solana-fe/static/js/main.c2b37c17.js.map",
+    "787.c2b0d93e.chunk.js.map": "/solana-fe/static/js/787.c2b0d93e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b5ed3d00.css",
-    "static/js/main.6922f7a0.js"
+    "static/js/main.c2b37c17.js"
   ]
 }
