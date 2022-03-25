@@ -1,8 +1,8 @@
 {
-  "name": "sol-dev",
+  "name": "solana-fe",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bengeh.github.io",
+  "homepage": "https://bengeh.github.io/solana-fe",
   "dependencies": {
     "@project-serum/anchor": "^0.23.0",
     "@reduxjs/toolkit": "^1.8.0",
