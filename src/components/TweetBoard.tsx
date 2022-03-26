@@ -7,14 +7,13 @@ import classes from "./TweetBoard.module.scss";
 
 const TweetBoard = () => {
     const dispatch = useDispatch()
-    const isWalletConnected = useSelector((state: RootState) => state.tweets.isWalletConnected)
     const tweetList = useSelector((state: RootState) => state.tweets.tweetList)
     const totalTweet = useSelector((state: RootState) => state.tweets.totalTweets)
     const [states, setStates] = useState({
         userName:'',
         tweet:''
         })
-        
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => { 
         setStates({
             ...states,
@@ -23,7 +22,7 @@ const TweetBoard = () => {
     }
     const sendTweet = async () => {
         if (states.userName) {
-          console.log('Gif link:', states);
+          console.log('Tweet state: ', states);
           dispatch(createTweet(states))
         } else {
           console.log('Empty input. Try again.');
@@ -31,11 +30,6 @@ const TweetBoard = () => {
       };
       
       
-
-      useEffect(() => {
-        console.log("this is tweet list...", tweetList)
-        
-      }, [tweetList])
 
       const handleOneTimeInit = () => {
         dispatch(createGifAccount())

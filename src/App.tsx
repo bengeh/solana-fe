@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { RootState } from './store';
-import { setIsWalletConnected } from "./features/tweets/tweetSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { getTweetList } from "./features/tweets/tweetSlice"
 import TweetBoard from "./components/TweetBoard";
-import logo from './logo.svg';
 import './App.css';
 import { Buffer } from 'buffer';
 window.Buffer = Buffer;
@@ -13,10 +12,8 @@ declare global {
   }
 }
 
-
-
 function App() {
-  
+  const dispatch = useDispatch()
   const [walletAddress, setWalletAddress] = useState(null);
   
   // Actions
@@ -76,14 +73,9 @@ function App() {
     return () => window.removeEventListener('load', onLoad);
   }, []);
   useEffect(() => {
-    if (walletAddress) {
-      console.log('Fetching GIF list...');
-      
-      // Call Solana program here.
-  
-      // Set state
-      // dispatch(setIsWalletConnected(true))
-      // getGifList()
+    if (walletAddress) {      
+      console.log("wallet connected... retrieving tweet list")
+      dispatch(getTweetList())
     }
   }, [walletAddress]);
 
